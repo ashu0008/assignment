@@ -9,7 +9,7 @@ logging.basicConfig(format='[%(asctime)s] - [%(levelname)s] - [%(filename)s] - %
 
 INPUT_DIR = os.getenv("INPUT_DIR", "/usr/src/app-sender/input")
 ENCRYPTION_KEY = os.getenv("ENCRYPTION_KEY", "/tmp/encryption_key")
-SCAN_INTERVAL = os.getenv("SCAN_INTERVAL", "5")
+SCAN_INTERVAL = os.getenv("SCAN_INTERVAL", "1")
 STATUS_DB_PATH = os.getenv("STATUS_DB_PATH", "/usr/src/app-sender/status-db")
 RECEIVER_ADDRESS = os.getenv("RECEIVER_ADDRESS", "127.0.0.1")
 RECEIVER_PORT = os.getenv("RECEIVER_PORT", "8080")

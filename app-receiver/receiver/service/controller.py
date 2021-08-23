@@ -41,4 +41,5 @@ def upload_file(filename):
     if request.method == 'POST':
       f = request.files['file']
       f.save(f.filename)
-      return jsonify({'msg':'success','status_code': 201}), 201
+      dec.decrypt(f, save_location)
+      return jsonify({'msg':'File is decrypted and saved to ' + save_location,'status_code': 201}), 201
