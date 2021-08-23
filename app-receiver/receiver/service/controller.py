@@ -40,6 +40,8 @@ def upload_file(filename):
     # HERE
     if request.method == 'POST':
       f = request.files['file']
-      f.save(f.filename)
-      dec.decrypt(f, save_location)
+      filePath = os.path.join(app.config['UPLOAD_FOLDER'], f.filename)
+      f.save(filePath)
+
+      dec.decrypt_file(filePath, save_location)
       return jsonify({'msg':'File is decrypted and saved to ' + save_location,'status_code': 201}), 201
