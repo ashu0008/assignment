@@ -4,7 +4,6 @@ from . import settings
 
 app = Flask("receiver")
 dec = Decrypter(settings.DECRYPTION_KEY)
-app.config['UPLOAD_FOLDER'] = "/usr/src/app-receiver/upload"
 
 @app.route("/", methods=["GET"])
 def health_check():
@@ -40,8 +39,6 @@ def upload_file(filename):
     # HERE
     if request.method == 'POST':
       f = request.files['file']
-      filePath = os.path.join(app.config['UPLOAD_FOLDER'], f.filename)
-      f.save(filePath)
-
-      dec.decrypt_file(filePath, save_location)
+      dec.decrypt(f.read(), save_location)
+      
       return jsonify({'msg':'File is decrypted and saved to ' + save_location,'status_code': 201}), 201
