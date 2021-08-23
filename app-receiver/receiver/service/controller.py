@@ -4,7 +4,7 @@ from . import settings
 
 app = Flask("receiver")
 dec = Decrypter(settings.DECRYPTION_KEY)
-
+app.config['UPLOAD_FOLDER'] = "/usr/src/app-receiver/upload"
 
 @app.route("/", methods=["GET"])
 def health_check():
