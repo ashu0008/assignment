@@ -15,3 +15,4 @@ BASE_PATH=$(dirname \"$(readlink "$0")\")
 
 mkdir -p $BASE_PATH/input $BASE_PATH/output $BASE_PATH/status-db
 dd if=/dev/urandom bs=32 count=1 2>/dev/null | openssl base64 > $BASE_PATH/key
+
