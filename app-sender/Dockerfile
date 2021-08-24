@@ -10,15 +10,16 @@ ENV RECEIVER_URI="/upload"
 
 WORKDIR /usr/src/app-sender
 
-COPY ./sender ./sender/
 COPY Pipfile ./
 COPY Pipfile.lock ./
-
-RUN mkdir -p /usr/src/app-sender/status-db \
-    && mkdir -p /usr/src/app-sender/input
 RUN pip install --no-cache-dir pipenv
 RUN pipenv install  --system --deploy --ignore-pipfile
 
-# AN IMPORTANT
-# DOCKERFILE DIRECTIVE
-# COULD BE MISSING
+COPY ./sender ./sender/
+
+
+RUN mkdir -p /usr/src/app-sender/status-db \
+    && mkdir -p /usr/src/app-sender/input && mkdir -p /run/secrets/  && touch /run/secrets/decryption_key
+
+
+ENTRYPOINT ["python","./sender/__main__.py"]
