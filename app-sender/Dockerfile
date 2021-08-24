@@ -1,6 +1,6 @@
 FROM python:3 as production_image
 
-ENV SCAN_INTERVAL="10"
+ENV SCAN_INTERVAL="1"
 ENV INPUT_DIR="/usr/src/app-sender/input"
 ENV ENCRYPTION_KEY="/run/secrets/encryption_key"
 ENV STATUS_DB_PATH="/usr/src/app-sender/status-db"
